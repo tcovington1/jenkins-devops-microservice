@@ -1,11 +1,15 @@
 pipeline {
-	// agent any
-	agent { docker { image 'maven:latest' }}
+	agent any
+	// agent { docker { image 'maven:latest' }}
 		stages {
 			stage('Build') {
 				steps {
 					echo "Build"
-					sh 'mvn --version'
+					// sh 'mvn --version'
+					echo "BUILD_NUMBER - $env.BUILD_NUMBER"
+					echo "BUILD_ID - $env.BUILD_ID"
+					echo "BUILD_NAME - $env.JOB_NAME"
+					echo "BUILD_TAG - $env.BUILD_TAG"
 				}
 			}
 			stage('Test') {
